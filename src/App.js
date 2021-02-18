@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-  plusClick(e){
-    const number = Number(document.getElementById('number').innerHTML)
-    const newNumber = number + 1;
-    document.getElementById('number').innerHTML = newNumber;
+  state = {
+    value: 4
   }
-
-  minusClick(e){
-    const number = Number(document.getElementById('number').innerHTML)
-    const newNumber = number - 1;
-    document.getElementById('number').innerHTML = newNumber;
+  plusClick = (e) => {
+    const newValue = this.state.value + 1
+    this.setState({
+      value: newValue
+    })
   }
-
+  minusClick = (e) => {
+    const newValue = this.state.value - 1
+    this.setState({
+      value: newValue
+    })
+  }
   render() {
     return(
       <div className='Counter'>
         <p>посчитаем</p>
         <button onClick={this.plusClick}>plus</button>
-        <span id='number'>4</span>
+        <span id='number'>{ this.state.value }</span>
         <button onClick={this.minusClick}>minus</button>
       </div>
     )
